@@ -1,0 +1,41 @@
+* {
+    /* border: 1px solid yellow; */
+}
+body {
+    background-color: black;
+    color: white;
+    display: flex;
+    font-family: "Monaco";
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.container {
+    width: 50%;
+    display: flex;
+    justify-content: space-between;
+}
+.logoImg {
+    width: 100px;
+    height: 100px;
+}
+.logos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.score_board {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 75%;
+    height: 40vh;
+}
+.images {
+    width: 160px;
+    height: 200px;
+}
+.vs {
+    height: 70px;
+    width: 70px;
+}
