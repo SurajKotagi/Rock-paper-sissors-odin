@@ -76,3 +76,33 @@ function playGame() {
     }
 }
 // playGame();
+
+let startBtn = document.getElementById("startBtn");
+startBtn.style.backgroundColor = "orange";
+
+let choiceContainer = document.getElementById("choicesContainer");
+
+startBtn.addEventListener("click", function () {
+    choiceContainer.style.display = "flex";
+    startBtn.style.display = "none";
+});
+
+let choices = document.getElementsByClassName("choices");
+for (let i = 0; i < choices.length; i++) {
+    choices[i].addEventListener("mouseover", function () {
+        choices[i].style.transform = "scale(1.2)";
+        choices[i].style.cursor = "pointer";
+    });
+    choices[i].addEventListener("mouseout", function () {
+        choices[i].style.transform = "scale(1)";
+    });
+}
+choices[0].addEventListener("click", function () {
+    console.log("clicked on rock");
+});
+choices[1].addEventListener("click", function () {
+    console.log("clicked on paper");
+});
+choices[2].addEventListener("click", function () {
+    console.log("clicked on sissor");
+});

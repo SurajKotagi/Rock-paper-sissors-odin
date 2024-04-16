@@ -12,14 +12,14 @@ body {
 }
 .container {
     width: 50%;
-    display: flex;
+    display: none;
     justify-content: space-between;
 }
 .logoImg {
     width: 100px;
     height: 100px;
 }
-.logos {
+.choices {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -29,7 +29,7 @@ body {
     align-items: center;
     justify-content: space-around;
     width: 75%;
-    height: 40vh;
+    height: 70vh;
 }
 .images {
     width: 160px;
@@ -38,4 +38,15 @@ body {
 .vs {
     height: 70px;
     width: 70px;
+}
+.scorediv {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#startBtn {
+    width: 200px;
+    height: 40px;
+    border-radius: 20px;
+    font-family: "Monaco";
 }
