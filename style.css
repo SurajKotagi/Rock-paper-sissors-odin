@@ -40,7 +40,7 @@ body {
     width: 70px;
 }
 .scorediv {
-    display: flex;
+    display: none;
     flex-direction: column;
     align-items: center;
 }
@@ -49,4 +49,10 @@ body {
     height: 40px;
     border-radius: 20px;
     font-family: "Monaco";
+}
+#startBtnDiv {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }

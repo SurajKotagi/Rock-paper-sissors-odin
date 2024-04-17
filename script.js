@@ -48,43 +48,73 @@ function singleRound(userChoice, computersChoice) {
         return 3;
     }
 }
+function round(playerSelection) {
+    let computerScoreDisplay = document.getElementById("computerScore");
+    let playerScoreDisplay = document.getElementById("playerScore");
 
-function playGame() {
-    let playerScore = 0;
-    let computerScore = 0;
-    for (let i = 0; i < 5; i++) {
-        const playerSelection = prompt("enter you choice :");
-        const computerSelection = getComputerChoice();
-        let result = singleRound(playerSelection, computerSelection);
-        if (result == 0) {
-            computerScore++;
-        } else if (result == 1) {
-            playerScore++;
-        } else if (result == 2) {
-        } else {
-            i--;
-        }
+    const computerSelection = getComputerChoice();
+    let result = singleRound(playerSelection, computerSelection);
+    if (result == 0) {
+        computerScoreDisplay.innerText =
+            Number(computerScoreDisplay.innerText) + 1 + "";
+    } else if (result == 1) {
+        playerScoreDisplay.innerText =
+            Number(playerScoreDisplay.innerText) + 1 + "";
     }
-    console.log(`player score : ${playerScore}`);
-    console.log(`computer score : ${computerScore}`);
-    if (playerScore > computerScore) {
-        console.log("Ultimately the winner is player");
-    } else if (computerScore > playerScore) {
-        console.log("Ultimately the winner is computer");
-    } else {
-        console.log("Ultimately its tie!");
+    checkWinner(
+        Number(playerScoreDisplay.innerText),
+        Number(computerScoreDisplay.innerText)
+    );
+}
+function finish(text) {
+    choiceContainer.style.display = "none";
+    scoreDiv[0].style.display = "none";
+    scoreDiv[1].style.display = "none";
+    let slctAnyTextElmnt = document.getElementById("selectAnyTxt");
+    slctAnyTextElmnt.innerText = text;
+    let restartBtn = document.createElement("button");
+    restartBtn.id = "restart";
+    restartBtn.style.backgroundColor = "orange";
+    restartBtn.style.borderRadius = "20px";
+    restartBtn.style.width = "200px";
+    restartBtn.style.height = "40px";
+    restartBtn.style.fontFamily = "Monaco";
+    restartBtn.innerText = "restart";
+    startBtnDiv.appendChild(restartBtn);
+    restartBtn.addEventListener("click", function () {
+        console.log("clicked on restart");
+        location.reload();
+    });
+}
+function checkWinner(playerScore, computerScore) {
+    if (playerScore == 5 && computerScore == 5) {
+        finish("Ultimately its tie!");
+    } else if (computerScore == 5) {
+        finish("Ultimately the winner is computer");
+    } else if (playerScore == 5) {
+        finish("Ultimately the winner is player");
     }
 }
-// playGame();
 
 let startBtn = document.getElementById("startBtn");
 startBtn.style.backgroundColor = "orange";
 
 let choiceContainer = document.getElementById("choicesContainer");
+let scoreDiv = document.getElementsByClassName("scorediv");
+let startBtnDiv = document.getElementById("startBtnDiv");
 
+let playerScore = 0;
+let computerScore = 0;
 startBtn.addEventListener("click", function () {
     choiceContainer.style.display = "flex";
+    scoreDiv[0].style.display = "flex";
+    scoreDiv[1].style.display = "flex";
     startBtn.style.display = "none";
+
+    let selectAnyTxt = document.createElement("h3");
+    selectAnyTxt.id = "selectAnyTxt";
+    selectAnyTxt.textContent = "Pick anyone of below";
+    startBtnDiv.appendChild(selectAnyTxt);
 });
 
 let choices = document.getElementsByClassName("choices");
@@ -98,11 +128,11 @@ for (let i = 0; i < choices.length; i++) {
     });
 }
 choices[0].addEventListener("click", function () {
-    console.log("clicked on rock");
+    round("rock");
 });
 choices[1].addEventListener("click", function () {
-    console.log("clicked on paper");
+    round("paper");
 });
 choices[2].addEventListener("click", function () {
-    console.log("clicked on sissor");
+    round("sissor");
 });
